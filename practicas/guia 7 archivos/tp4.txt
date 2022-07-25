@@ -1,0 +1,23 @@
+from gettext import install
+
+from matplotlib import type1font
+
+
+argparse.ArgumentParser
+
+song = song.Song
+instrument = instrument.Instrument
+sinty = sintetizador.Sintetizador
+        
+
+tp1
+    setup.py
+    sintetizador/
+    
+    
+    requirements.py
+
+unittest
+test de todas las funciones
+    en clases 
+
