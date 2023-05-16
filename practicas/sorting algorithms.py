@@ -1,29 +1,15 @@
 #%%
 
-# Python program for implementation of Bubble Sort
-
-import imp
-
-
 def bubbleSort(arr):
 	n = len(arr)
 
-	# Traverse through all array elements
 	for i in range(n-1):
-	# range(n) also work but outer loop will
-	# repeat one time more than needed.
-
-		# Last i elements are already in place
-		for j in range(0, n-i-1):
-
-			# traverse the array from 0 to n-i-1
-			# Swap if the element found is greater
-			# than the next element
-			if arr[j] > arr[j + 1] :
+		for j in range(n-i-1):
+                        
+			if arr[j] > arr[j + 1]:
 				arr[j], arr[j + 1] = arr[j + 1], arr[j]
 	return arr
 
-# Driver code to test above
 arr = [64, 34, 25, 12, 22, 11, 90]
 
 bubbleSort(arr)
@@ -81,14 +67,20 @@ def selection_sort(list):
 # %%
 
 
-def insertion_sort(list):
-    for i in range(1, len(list)):
-        key = list[i]
-        j = i - 1
-        while j >= 0 and key < list[j]:
-            list[j + 1] = list[j]
-            j -= 1
-        list[j + 1] = key
+def insertion_sort(arr):
+    for current_index in range(1, len(arr)):
+        current_value = arr[current_index]
+        compare_index = current_index - 1
+        
+        while compare_index >= 0 and current_value < arr[compare_index]:
+            arr[compare_index + 1] = arr[compare_index] # Muevo los elementos mayores hacia la derecha
+            compare_index -= 1
+        
+        # Inserta el elemento en su posición adecuada
+        arr[compare_index + 1] = current_value
+    
+    return arr
+
 
 import random
 list = [random.randint(0, 100) for i in range(10)]
@@ -96,24 +88,6 @@ list = [random.randint(0, 100) for i in range(10)]
 insertion_sort(list)
 print(list)
 
-
-# %%
-
-#make an iterable class
-class Iterable:
-    def __init__(self, start, end):
-        self.start = start
-        self.end = end
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        if self.start <= self.end:
-            self.start += 1
-            return self.start -1
-        else:
-            raise StopIteration
 
 # %%
 

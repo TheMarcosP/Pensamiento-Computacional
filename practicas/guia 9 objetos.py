@@ -139,10 +139,29 @@ def main():
     dic = {'s':Scissor,'r':Rock,'p':Paper}
     player = dic[player]()
     return player.cmp(computer)
-# %%
 
+
+# %%
 
 def rgb_to_hex(r, g, b):
   return ('{:X}{:X}{:X}').format(r, g, b)
 
 print(rgb_to_hex(255, 165, 1))
+
+# %%
+
+#make an iterable class
+class Iterable:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.start <= self.end:
+            self.start += 1
+            return self.start -1
+        else:
+            raise StopIteration

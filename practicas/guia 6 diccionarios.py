@@ -124,3 +124,44 @@ def bit(lista):
 # cree una función que reciba una lista de strings con 7 bits y devuelva un diccionario donde estos strings
 # sean las claves y el CRC (de 4 bits de largo) el valor asociado
 
+
+
+## clase 1 flor
+
+dictionario = {'a':1,'b':2,'c':3,'d':4,'e':5}
+
+dictionario["d"]
+
+dictionario.keys()
+
+
+# %%
+
+# a. Escribir una función que reciba una estación y devuelva las líneas que pasan por esa estación. b. Escribir una función que pida al usuario una estación de origen y otra de destino e indique qué línea tomar para ir de una a otra. Si no hay conexión directa, debe indicar cuáles son las estaciones de conexión.
+
+# En una realidad alternativa la red de subterráneos de Buenos Aires está compuesta por 4 líneas, A, C, D y E. Cada línea tiene 3 estaciones, y nunca hace falta hacer más de un cambio de línea para ir de una estación a otra. Los siguientes diccionarios describen la red:
+
+subtes = {"A", "C", "D", "E"}
+estaciones = {"A": ["Acoyte", "Avenida de Mayo", "Callao"],
+          "C": ["Avenida de Mayo", "Congreso", "Urquiza"],
+          "D": ["Pellegrini", "Urquiza", "Callao"],
+          "E": ["Pellegrini", "Lima", "Avenida de Mayo"]}
+
+
+def get_lineas(estaciones, estacion):
+
+    lineas_que_pasan_estacion = []
+
+    for lineas in estaciones.items():
+        linea = lineas[0]
+        estaciones_de_linea = lineas[1]
+
+        if estacion in estaciones_de_linea:
+            lineas_que_pasan_estacion.append(linea)
+
+    return lineas_que_pasan_estacion
+
+
+get_lineas(estaciones, "Avenida de Mayo") # [A,B,C]
+
+# %%
