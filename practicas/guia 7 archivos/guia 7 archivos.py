@@ -1,15 +1,50 @@
 # %%
+# metodos para archivos
+# with open()
+# for line in file
+# file.write
+# f.readline
+# f.readlines !
+
+# nuevos metodos de strings "en orden de importancia"
+# str.split()
+# str.strip()
+# str.index()
+
+# str.replace(find,replace)
+# str.isspace()
+
+#2 Escriba una función, llamada head, que reciba un archivo y un número N e imprima las primeras N líneas.
+def head(file : str, n : int):
+    with open(file,'r') as f:
+        for i in range(n):
+            print(f.readline())
+
+
+
+#5 Escribir una función, llamada cp, que copie todo el contenido de un archivo a otro, de modo que quede exactamente igual.
 
 def cp(file1 : str,file2 : str):
     with open(file1,'r') as f1, open(file2,'w') as f2:
         for line in f1:
-            print(line)
+            # print(line)
             f2.write(line)
 
 cp('t1.txt','t2.txt')
 
+
+
+
+
 # %%
 # ej 6
+
+
+
+
+
+
+
 def wc(file : str):
     lineas =0
     palabras= 0 
@@ -20,13 +55,34 @@ def wc(file : str):
             palabras += len(line.split())
             caracteres += len(line)
     print(lineas,palabras,caracteres, file)
+
+
+
+
+
+
+
+
+
+
 # %%
+
+
+
 # ej 7
-def grep(archivo : str,cadena : str):
-    with open(archivo,'r') as f:
+def grep(file : str,cadena : str):
+    with open(file,'r') as f:
         for line in f:
             if cadena in line:
                 print(line)
+
+
+
+
+
+
+
+
 # %%
 # 9. ★★☆ Escribir una función, llamada rot13, que reciba un archivo de texto de origen y uno de
 # destino, de modo que para cada línea del archivo origen, se guarde una línea cifrada en el archivo
@@ -50,7 +106,16 @@ def encrypt(cadena):
             encrypted += char
         else:
             encrypted += ascii_lowercase[(index+13)%26]
-    return encrypted            
+    return encrypted     
+
+
+
+
+
+
+
+
+
 #%% 
 # 10
 def load_data(file:str):
@@ -60,16 +125,34 @@ def load_data(file:str):
             dicti[line.split(":")[0]] = line.split(':')[1][:-1]
     return dicti
 
+d = load_data("ej10.txt")
+
+
+
+
+
+
+
+
+
+
 # %%
 # 11 mejor forma de hacerlo?
 
-def sed(file,find:str,replace:str):
+
+
+
+def find_and_replace(file, find:str, replace:str):
     new = ''
     with open(file,'r') as f:
         for line in f:
             new += line.replace(find,replace)
     with open(file,'w') as f:
         f.write(new)
+
+
+
+
 
 #%%
 # 15. ★★☆ Dado el siguiente archivo de texto, que contiene un guion de la serie Seinfeld:
@@ -78,14 +161,13 @@ def sed(file,find:str,replace:str):
 # 3. Eliminar puntuaciones.
 # 4. Eliminar informacion adicional para los actores.
 # 5. Guardar el archivo con los cambios.
-
 def clean_text(file):
     with open(file,'r') as f:
         text = ''
         for line in f:
-            # borro lineas en blanco
+            # borro lineas en blanco 2
             if not line.isspace():
-                # borro el nombre del actor
+                # borro el nombre del actor 1
                 try:
                     start = line.index(':') + 1
                 except ValueError:
@@ -94,13 +176,13 @@ def clean_text(file):
                 text += line[start:]
         
         clean = ''
-        # borro lo que esta en parentesis
+        # borro lo que esta en parentesis 4
         in_parenthesis = False
         for char in text:
             if char == '(':
                 in_parenthesis = True
 
-            if char not in ',.?!' and not in_parenthesis:
+            if char not in ',.?!' and not in_parenthesis: # 3
                 clean += char
                 
             elif char == ')':
@@ -108,9 +190,21 @@ def clean_text(file):
 
         return clean
 
-def overwrite_file(file,text):
+def overwrite_file(file,text):  #5
     with open(file,'w') as f:
         f.write(text)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # %%
@@ -141,6 +235,17 @@ def order_by_speed(lista):
         if len(i) == 4 and 'bipedal' in i[3]:
             x.append(i)
     return sorted(x , key = calc_speed)
+
+
+
+
+
+
+
+
+
+
+
 
 
 # %%
